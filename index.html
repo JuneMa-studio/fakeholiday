@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 设置全局宽度为设备宽度，初始缩放一倍，最大缩放一倍，禁止用户缩放 -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>请假_填写</title>
+		<style>
+			*{
+				margin: 0px;
+			}
+			#header{
+				width: 100%;
+				line-height: 100px;
+			}
+			#hd1{
+				font-size: 40px;
+				width: 70%;
+			}
+			#hd2{
+				font-size: 15px;
+				width: 30%;
+			}
+			#mainbody{
+				overflow: hidden;
+			}
+			.inpt{
+				font-size: 20px;
+				width: 50%;
+				margin-left: 10%;
+			}
+			.bt{
+				margin-left: 3%;
+			}
+			#anniu{
+				width: 100%;
+				align: center;
+				height: 40px;
+			}
+		</style>
+		<script>
+			function go(){
+				var myname = document.getElementById("myname").value;
+				var wanna = document.getElementById("wanna").value;
+				var bgtime = document.getElementById("bgtime").value;
+				var endtime = document.getElementById("endtime").value;
+				var telnum = document.getElementById("telnum").value;
+				var loca = document.getElementById("loca").value;
+				var Because = document.getElementById("Because").value;
+				var HowToGo = document.getElementById("HowToGo").value;
+				var WhereToGo = document.getElementById("WhereToGo").value;
+				var name1 = document.getElementById("name1").value;
+				var passtime1 = document.getElementById("passtime1").value;
+				var bb1 = document.getElementById("bb1").value;
+				
+				document.location.href='app.html?myname='+myname+'&wanna='+wanna+
+				'&bgtime='+bgtime+'&endtime='+endtime+'&telnum='+telnum+'&loca='+loca+
+				'&Because='+Because+'&HowToGo='+HowToGo+'&WhereToGo='+WhereToGo+
+				'&name1='+name1+'&passtime1='+passtime1+'&bb1='+bb1;
+			}
+			var ntm = Date.now();//获取当前时间戳（毫秒）
+			var time = new Date(ntm);//毫秒转日期格式
+			//使用函数的方式进行定义
+			function dateFormat(fmt,date){
+				var o = {
+					"M+" : date.getMonth()+1,
+					"d+" : date.getDate(),
+					"h+" : date.getHours(),
+					"m+" : date.getMinutes(),
+					"s+" : date.getSeconds(),
+				};
+				if(/(y+)/.test(fmt)){
+					fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
+				}
+				for(var k in o)
+					if(new RegExp("("+ k +")").test(fmt))
+						fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+				return fmt;
+			}
+			var temptime = dateFormat("yyyy-MM-dd hh:mm",time);
+			console.log(temptime);
+			var tvalue = temptime.substring(5,14);
+			console.log(tvalue);
+		</script>
+	</head>
+	<body>
+		<div id="mainbody" >
+				<table id="header" >
+					<tr>
+						<td id="hd1"><p><strong>假日校园</strong>lite</p></td>
+						<td id="hd2" ><a href="getpro.html">获取Pro版</a></td>
+					</tr>
+				</table>
+			<div>
+				<p  align="center"><strong>------注意------</strong><br>
+				想拥有完整功能请点击右上角查看详情<br>填写前看清楚避免不必要的纠纷，
+				部分选项已给好默认值，如需填写请修改，<strong>给定格式不可打乱</strong>，提交后请保持后台运行；<br>
+				所有数据都是<strong>一次性</strong>的，重新打开软件将清空；<br>
+				<strong>软件不上传任何个人信息，所有操作均在本地完成，您也可以断网运行；</strong><br>
+				最后，出行请注意安全，本软件仅供前端学习使用，不承担任何安全责任。</p>
+				<br>
+				<p class="bt" style="color: #f00;" ><strong>以下是填写部分：</strong></p>
+				<p class="bt">请严格按照给定的格式填写，时间为24小时制</p>
+				<br>
+				<p class="bt" >申请人：</p>
+				<input id="myname" class="inpt" type="text" value=""/>
+				
+				<p class="bt" >请假<strong>申请时间</strong>：</p>
+				<input id="wanna" class="inpt" type="text" value=""/>
+				
+				<p class="bt" >请假<strong>开始</strong>时间：</p>
+				<input id="bgtime" class="inpt" type="text" value=""/>
+				
+				<p class="bt" >请假<strong>结束</strong>时间：</p>
+				<input id="endtime" class="inpt" type="text" value=""/>
+				
+				<p class="bt" >紧急联系电话：</p>
+				<input id="telnum" class="inpt" type="text" value=""/>
+				
+				<p class="bt" >请假发起位置：</p>
+				<input id="loca" class="inpt" type="text" value=""/>
+				
+				<p class="bt" >请假原因：(10-14个字)</p>
+				<input id="Because" class="inpt" type="text" value="事假"/>
+				
+				<p class="bt" >出行方式：</p>
+				<input id="HowToGo" class="inpt" type="text" value="公共交通"/>
+				
+				<p class="bt" >请假目的地：</p>
+				<input id="WhereToGo" class="inpt" type="text" />
+				<p></p>
+				<br>
+				<p class="bt" >审核流程类型选择：</p>
+				<p class="bt" style="color: #f00;">不可用，需要请获取Pro版</p>
+				<br>
+				<p class="bt" >一级审核(班导姓名)：</p>
+				<input id="name1" class="inpt" type="text" />
+				<p class="bt" >一级审核通过时间：</p>
+				<input id="passtime1" class="inpt" type="text" value=""/>
+				<p class="bt" >一级审核意见：</p>
+				<input id="bb1" class="inpt" type="text" value="同意"/>
+				<p></p>
+				<br>
+				<script>
+					document.getElementById('wanna').value = tvalue+'00';
+					document.getElementById('bgtime').value = tvalue+'00';
+					document.getElementById('endtime').value = tvalue+'00';
+					document.getElementById('passtime1').value = tvalue+'00';
+				</script>
+				<button id="anniu" onclick="go()" >提交并生成假条</button>
+				<p></p><br>
+				
+				<p align="center" >传递内容较多，部分低端手机可能出现跳转慢和不跳转的情况。请不要急躁，耐心等待，请不要连续多次点击，避免应用卡死。<br>
+				若功能不正常，请更新安卓系统WebView</p>
+			</div>
+		</div>
+	</body>
+</html>

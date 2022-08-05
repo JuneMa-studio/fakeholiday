@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title></title>
+		<style>
+			*{
+				margin: 0px;
+			}
+			#rollbox{
+				width: 100%;
+			}
+			@keyframes scrollToUp {
+				0% {
+					background-position: 0 0;
+				}
+				100% {
+					background-position: -371% 0;
+				}
+			}
+			#imgBgc{
+				height: 150px;
+				width: 100%;
+				background-image: url(img/动态防伪.png);
+				background-repeat: repeat-x;
+				background-size: 130% 150px;
+				margin-bottom: 0px;
+				background-attachment: fixed;
+				background-position: center center;
+				animation: scrollToUp 7s linear infinite;
+			}
+			#sptgimg0{
+				height: 22px;
+			}
+			#sptgimg{
+				width: 15px;
+			}
+			#spytg{
+				color: #fff;
+				font-size: 20px;
+				letter-spacing: 2px;
+			}
+			#zzxjz{
+				color: #fff;
+				font-size: 40px;
+				letter-spacing: 4px;
+			}
+			#clocktd{
+				height: 10px;
+			}
+			#clock{
+				font-size: 13px;
+				color: #fff;
+				background: rgba(100, 100, 100, 0.6);
+				-webkit-border-radius: 20px;
+				text-align: center;
+				height: 40px;
+				padding: 0 5px;
+			}
+		</style>
+		<script>
+			function gettime(){
+				var ntm = Date.now();//获取当前时间戳（毫秒）
+				var time = new Date(ntm);//毫秒转日期格式
+				//使用函数的方式进行定义
+				function dateFormat(fmt,date){
+					var o = {
+						"M+" : date.getMonth()+1,
+						"d+" : date.getDate(),
+						"h+" : date.getHours(),
+						"m+" : date.getMinutes(),
+						"s+" : date.getSeconds(),
+					};
+					if(/(y+)/.test(fmt)){
+						fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
+					}
+					for(var k in o)
+						if(new RegExp("("+ k +")").test(fmt))
+							fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+					return fmt;
+				}
+				var showtime = "当前时间:"+dateFormat("yyyy-MM-dd hh:mm:ss",time);
+				document.getElementById('clock').innerHTML = showtime;
+			}
+			setInterval("gettime()",1000);
+		</script>
+	</head>
+	<body>
+		<div id="rollbox">
+			<table id="imgBgc">
+				<tr>
+					<td align="center" style="height: 30px;" >
+						<img src="img/rhxj.png" id="sptgimg0"/>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						
+						<div>
+							
+							<p id="spytg" ><img src="img/duigou.png" id="sptgimg" />审批已通过</p>
+							<p id="zzxjz" >正在休假中</p>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td align="center" id="clocktd" ><span id="clock" ></span></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
